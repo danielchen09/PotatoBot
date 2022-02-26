@@ -14,7 +14,6 @@ app.use(cors({
     origin: "http://localhost:3000"
 }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'client/build')));
 const port = process.env.PORT || 8080;
 const server = http.createServer(app);
 
@@ -26,10 +25,6 @@ const io = new Server(server, {
 
 youtubeHandler = new YoutubeHandler();
 discordHandler = new DiscordHandler(youtubeHandler, io);
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
-});
 
 app.get('/auth', async function(req, res) {
     const {tokens} = await youtubeHandler.oauth2Client.getToken(req.query.code)
