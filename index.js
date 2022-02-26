@@ -11,7 +11,7 @@ const axios = require("axios");
 
 const app = express();
 app.use(cors({
-    origin: "http://localhost:3000"
+    origin: process.env.FRONTEND_URI
 }));
 app.use(express.json());
 const port = process.env.PORT || 8080;
