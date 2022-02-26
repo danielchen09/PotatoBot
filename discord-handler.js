@@ -289,7 +289,15 @@ class DiscordHandler {
         if (serverQueue.playing)
             return;
         serverQueue.playing = true;
-        let stream = await playdl.stream(song.url, { discordPlayerCompatibility : true })
+        let stream = null;
+        try {
+            stream = await playdl.stream(song.url, { discordPlayerCompatibility : true })
+        } catch(e) {
+            serverQueue.textChannel.send('Unable to play song');
+            serverQueue.songs.shift();
+            this.playSong(guildId, serverQueue.songs[0]);
+            return;
+        }
 
         const dispatcher = serverQueue.connection
             .play(stream.stream)
