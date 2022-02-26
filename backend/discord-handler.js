@@ -1,10 +1,12 @@
 const Discord = require('discord.js');
-const {
-    prefix,
-    token,
-    google_api_key,
-    client_secret
-} = require('./credentials');
+// const {
+//     prefix,
+//     token,
+//     google_api_key,
+//     client_secret
+// } = require('./credentials');
+const prefix = '!'
+const token = process.env.DISCORD_TOKEN
 const utils = require('./utils');
 const playdl = require("play-dl");
 const url = require("url");

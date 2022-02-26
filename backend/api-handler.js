@@ -1,10 +1,17 @@
 const {google} = require("googleapis");
-const {
-    prefix,
-    token,
-    google_api_key,
-    client_secret
-} = require('./credentials');
+// const {
+//     prefix,
+//     token,
+//     google_api_key,
+//     client_secret
+// } = require('./credentials');
+const google_api_key = process.env.GOOGLE_API_KEY;
+const client_secret = {
+    web: {
+        client_id: process.env.CLIENT_ID,
+        client_secret: process.env.CLIENT_SECRET
+    }
+}
 const axios = require("axios");
 const {URLSearchParams} = require("url");
 
