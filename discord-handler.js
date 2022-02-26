@@ -139,7 +139,7 @@ class DiscordHandler {
             serverQueue = this.addServer(message)
         if (!serverQueue.connection)
             serverQueue.connection = await message.member.voice.channel.join();
-        message.channel.send(`http://localhost:3000?guildId=${message.guild.id}`)
+        message.channel.send(`${process.env.FRONTEND_URI}?guildId=${message.guild.id}`)
     }
 
     getQueue(guildId) {
